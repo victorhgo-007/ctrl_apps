@@ -1,27 +1,4 @@
-<!--
-@license
-Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/app-route/app-location.html">
-<link rel="import" href="../bower_components/app-route/app-route.html">
-<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
-<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
-<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
-<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
-<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
-<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
-<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
-<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
-<link rel="import" href="my-icons.html">
-
-<dom-module id="my-app">
+<dom-module id="ce01-app">
 
   <template>
 
@@ -69,15 +46,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         data="{{routeData}}"
         tail="{{subroute}}"></app-route>
 
-    <app-drawer-layout fullbleed>
+    <app-drawer-layout fullbleed force-narrow>
 
       <!-- Drawer content -->
       <app-drawer>
         <app-toolbar>Menu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="view1" href="/view1">View One</a>
-          <a name="view2" href="/view2">View Two</a>
-          <a name="view3" href="/view3">View Three</a>
+          <a  href="/ce01-view1">View One</a>
+          <a  href="/ce01-view2">View Two</a>
+          <a  href="/ce01-view3">View Three</a>
         </iron-selector>
       </app-drawer>
 
@@ -92,9 +69,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </app-header>
 
         <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
-          <my-view1 name="view1"></my-view1>
-          <my-view2 name="view2"></my-view2>
-          <my-view3 name="view3"></my-view3>
+          <ce01-view1 name="ce01-view1"></ce01-view1>
+          <ce01-view2 name="ce01-view2"></ce01-view2>
+          <ce01-view3 name="ce01-view3"></ce01-view3>
         </iron-pages>
 
       </app-header-layout>
@@ -107,7 +84,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     Polymer({
 
-      is: 'my-app',
+      is: 'ce01-app',
 
       properties: {
 
@@ -130,7 +107,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _pageChanged: function(page) {
         // load page import on demand.
         this.importHref(
-          this.resolveUrl('my-' + page + '.html'), null, null, true);
+          this.resolveUrl(page + '.html'), null, null, true);
       }
 
     });
